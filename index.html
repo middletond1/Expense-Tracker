@@ -4,23 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Expense Tracker</title>
     <link rel="stylesheet" href="style.css"></link>
 </head>
 <body>
     <h1>Expense Tracker</h1>
-    <form>
+    <form id="expenseform">
         <label for="expense">Enter the Expense:</label>
-        <input type="text" id="expense" name="expense">
+        <input type="text" id="expense" name="expense" required>
         <label for="amount">Amount:</label>
-        <input type="number" id="amount" name="amount" step=".01">
+        <input type="number" id="amount" name="amount" step=".01" required>
         <label for="date">Date:</label>
-        <input type="date" id="date" name="date">
+        <input type="date" id="date" name="date" required>
         <label for="store">Store:</label>
         <input type="text" id="store" name="store">
-        <button type="submit">Enter</button>
+        <button type="submit" id="submitbutton">Add Expense</button>
     </form>
-
+    <table id="expensetable">
+        <thead>
+            <tr>
+                <th>Expense</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Store</th>
+            </tr>
+        </thead>
+    </table>
     <script src="script.js"></script>
 </body>
 </html>
