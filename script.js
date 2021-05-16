@@ -19,9 +19,12 @@ function parseDate(date) {
 }
 
 function parseMonth(date) {
-    const month = parseInt(date.substr(5, 2));
+    const month = parseInt(date.substr(5, 2)) - 1;
+    return month;
+}
+
+function monthToCalendar(month) {
     const months = [
-        '',
         'January',
         'February',
         'March',
@@ -40,13 +43,34 @@ function parseMonth(date) {
 
 function parseYear(date) {
     const year = date.substr(0, 4);
-    console.log(year);
     return year;
 }
 
 function getStore() {
     const store = document.querySelector('#store').value;
     return store;
+}
+
+function createTableData(item) {
+    const tableData = document.createElement('td');
+    return tableData.textContent(`${item}`);
+}
+
+function createTableRow() {
+    const tableRow = document.createElement('tr');
+    return tableRow;
+}
+
+function buildTable(expense, amount, date, store) {
+    const table = document.querySelector('#expensetable').appendChild(createTableRow());
+    table.appendChild(createTableData(expense));
+    table.appendChild(createTableData(amount));
+    table.appendChild(createTableData(date));
+    table.appendChild(createTableData(store));
+}
+
+function drawTable() {
+
 }
 
 document.querySelector('#submitbutton').addEventListener('click', );
