@@ -1,15 +1,22 @@
+const expenseInput = document.querySelector('#expense');
+const amountInput = document.querySelector('#amount');
+const dateInput = document.querySelector('#date');
+const storeInput = document.querySelector('#store');
+const table = document.querySelector('#expensetable');
+
+
 function getExpense() {
-    const expense = document.querySelector('#expense').value;
+    const expense = expenseInput.value;
     return expense;
 }
 
 function getAmount() {
-    const amount = `$${parseFloat(document.querySelector('#amount').value).toFixed(2)}`;
+    const amount = `$${parseFloat(amountInput.value).toFixed(2)}`;
     return amount;
 }
 
 function getDate() {
-    const date = document.querySelector('#date').value;
+    const date = dateInput.value;
     return date;
 }
 
@@ -47,7 +54,7 @@ function parseYear(date) {
 }
 
 function getStore() {
-    const store = document.querySelector('#store').value;
+    const store = storeInput.value;
     return store;
 }
 
@@ -78,7 +85,6 @@ function deleteRow(element) {
 
 function buildTable(expense, amount, date, store) {
     const row = createTableRow();
-    const table = document.querySelector('#expensetable');
     row.appendChild(createTableData(expense));
     row.appendChild(createTableData(amount));
     row.appendChild(createTableData(date));
@@ -88,18 +94,18 @@ function buildTable(expense, amount, date, store) {
 }
 
 function drawTable() {
+    if (getExpense() === '' || getAmount() === `$${NaN}` || getDate() == '') {
+        return;
+    }
     const expense = getExpense();
     const amount = getAmount();
     const date = `${monthToCalendar(parseMonth(getDate()))} ${parseDate(getDate())}, ${parseYear(getDate())}`;
     const store = getStore();
-    if (expense === '' || amount === `$${NaN}` || getDate() == '') {
-        return;
-    }
     buildTable(expense, amount, date, store);
-    document.querySelector('#expense').value = '';
-    document.querySelector('#amount').value = '';
-    document.querySelector('#date').value = '';
-    document.querySelector('#store').value = '';
+    expenseInput.value = '';
+    amountInput.value = '';
+    dateInput.value = '';
+    storeInput.value = '';
 }
 
 document.querySelector('#submitbutton').addEventListener('click', drawTable);
@@ -108,4 +114,4 @@ document.querySelector('#expenseform').addEventListener('keydown', event => {
         drawTable();
     }
 });
-document.querySelector('#expensetable').addEventListener('click', deleteRow);
+table.addEventListener('click', deleteRow);
