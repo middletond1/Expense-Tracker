@@ -103,4 +103,9 @@ function drawTable() {
 }
 
 document.querySelector('#submitbutton').addEventListener('click', drawTable);
+document.querySelector('#expenseform').addEventListener('keydown', event => {
+    if (event.keyCode === 13) {
+        drawTable();
+    }
+});
 document.querySelector('#expensetable').addEventListener('click', deleteRow);
