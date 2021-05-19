@@ -11,9 +11,10 @@ form {
     /* Center the form on the page */
     margin: 0 auto;
     width: 400px;
+    background-color: rgb(218, 218, 218);
     /* Form outline */
     padding: 1em;
-    border: 3px solid #CCC;
+    border: 3px solid rgb(150, 150, 150);
     border-radius: 1em;
   }
   
@@ -66,19 +67,19 @@ input:focus {
         box-shadow:inset 0 -0.6em 1em -0.35em rgba(0,0,0,0.17),inset 0 0.6em 2em -0.3em rgba(255,255,255,0.15),inset 0 0 0em 0.05em rgba(255,255,255,0.12);
         text-align:center;
         position:relative; 
-  }
+}
 
 #submitbutton:active{
     box-shadow:inset 0 0.6em 2em -0.3em rgba(0,0,0,0.15),inset 0 0 0em 0.05em rgba(255,255,255,0.12);
-    }
+}
 
 table tr:nth-child(odd) {
-    background: #eee;
+    background: rgb(218, 218, 218);
 }
 
 table {
-    border-collapse: collapse;
-    border-radius: 1em;
+    border-collapse: separate;
+    border-spacing: 0;
     margin: 1.2em auto;
     width: 600px;
 }
@@ -96,5 +97,18 @@ td, th {
 .delete {
     border: 1px solid #999;
     padding: 0.5rem;
-    text-align: left;
+    border-radius:0.2em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight:400;
+    color:#FFFFFF;
+    background-color:#c4150f;
+    box-shadow:inset 0 -0.6em 1em -0.35em rgba(0,0,0,0.17),inset 0 0.6em 2em -0.3em rgba(255,255,255,0.15),inset 0 0 0em 0.05em rgba(255,255,255,0.12);
+    text-align: center;
 }
+
+.delete:active{
+  box-shadow:inset 0 0.6em 2em -0.3em rgba(0,0,0,0.15),inset 0 0 0em 0.05em rgba(255,255,255,0.12);
+}
+

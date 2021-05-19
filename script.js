@@ -79,17 +79,19 @@ function createDeleteButton() {
 
 function deleteRow(element) {
     if (element.target.classList.contains('delete')) {
-        element.target.parentElement.remove();
+        element.target.closest('tr').remove();
     }
 }
 
 function buildTable(expense, amount, date, store) {
     const row = createTableRow();
+    const deleteRow = document.createElement('td');
+    deleteRow.appendChild(createDeleteButton());
     row.appendChild(createTableData(expense));
     row.appendChild(createTableData(amount));
     row.appendChild(createTableData(date));
     row.appendChild(createTableData(store));
-    row.appendChild(createDeleteButton());
+    row.appendChild(deleteRow);
     table.appendChild(row);
 }
 
