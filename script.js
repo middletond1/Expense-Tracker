@@ -71,17 +71,27 @@ function createTableRow() {
     return tableRow;
 }
 
-function createDeleteButton() {
+function createDeleteButton(expense) {
     const deleteButton = document.createElement('button');
     deleteButton.classList = 'delete';
     deleteButton.appendChild(document.createTextNode('Remove'));
+    deleteButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        deleteRow(deleteButton, expense.id);
+    });
     return deleteButton;
 }
 
-function deleteRow(element) {
-    if (element.target.classList.contains('delete')) {
-        element.target.closest('tr').remove();
-    }
+function deleteRow(element, id) {
+    element.parentElement.parentElement.remove();
+    deleteLocalStorageExpense(id)
+}
+
+function deleteLocalStorageExpense(id) {
+    expenseArray = expenseArray.filter((expenseItem) => {
+        return expenseItem.id !== id;
+    });
+    pushToLocalStorage(expenseArray);
 }
 
 function buildTable(expense) {
