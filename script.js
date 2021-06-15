@@ -83,14 +83,14 @@ function deleteRow(element) {
     }
 }
 
-function buildTable(expense, amount, date, store) {
+function buildTable(expense) {
     const row = createTableRow();
+    row.appendChild(createTableData(expense.item));
+    row.appendChild(createTableData(expense.amount));
+    row.appendChild(createTableData(expense.date));
+    row.appendChild(createTableData(expense.location));
     const deleteRow = document.createElement('td');
-    deleteRow.appendChild(createDeleteButton());
-    row.appendChild(createTableData(expense));
-    row.appendChild(createTableData(amount));
-    row.appendChild(createTableData(date));
-    row.appendChild(createTableData(store));
+    deleteRow.appendChild(createDeleteButton(expense));
     row.appendChild(deleteRow);
     table.appendChild(row);
 }
