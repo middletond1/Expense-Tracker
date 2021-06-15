@@ -1,7 +1,7 @@
 const expenseInput = document.querySelector('#expense');
 const amountInput = document.querySelector('#amount');
 const dateInput = document.querySelector('#date');
-const storeInput = document.querySelector('#store');
+const locationInput = document.querySelector('#store');
 const table = document.querySelector('#expensetable');
 
 
@@ -54,7 +54,7 @@ function parseYear(date) {
 }
 
 function getStore() {
-    const store = storeInput.value;
+    const store = locationInput.value;
     return store;
 }
 
@@ -96,8 +96,13 @@ function buildTable(expense, amount, date, store) {
 }
 
 function drawTable() {
-    if (getExpense() === '' || getAmount() === `$${NaN}` || getDate() == '') {
-        return;
+    if (
+        !expenseInput.value ||
+        !amountInput.value ||
+        !dateInput.value ||
+        !locationInput.value
+    ) {
+        alert('Please fill out all input fields before submitting.')
     }
     const expense = getExpense();
     const amount = getAmount();
