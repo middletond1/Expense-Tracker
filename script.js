@@ -3,6 +3,7 @@ const amountInput = document.querySelector('#amount');
 const dateInput = document.querySelector('#date');
 const locationInput = document.querySelector('#store');
 const table = document.querySelector('#expensetable');
+let expenseArray = JSON.parse(localStorage.getItem('expenseArray')) || [];
 
 
 function getExpense() {
@@ -118,6 +119,12 @@ function drawTable() {
 
 function addNewExpense(expense) {
     buildTable(expense);
+    expenseArray.push(expense);
+    pushToLocalStorage(expenseArray);
+}
+
+function pushToLocalStorage(array) {
+    localStorage.setItem('expenseArray', JSON.stringify(array));
 }
 
 document.querySelector('#submitbutton').addEventListener('click', drawTable);
