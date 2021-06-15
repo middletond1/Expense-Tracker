@@ -139,3 +139,10 @@ function pushToLocalStorage(array) {
 
 document.querySelector('#submitbutton').addEventListener('click', drawTable);
 table.addEventListener('click', deleteRow);
+
+window.addEventListener('load', (e) => {
+    e.preventDefault();
+    expenseArray.forEach((expense) => {
+        buildTable(expense);
+    });
+});
