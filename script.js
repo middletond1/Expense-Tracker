@@ -104,15 +104,20 @@ function drawTable() {
     ) {
         alert('Please fill out all input fields before submitting.')
     }
-    const expense = getExpense();
-    const amount = getAmount();
-    const date = `${monthToCalendar(parseMonth(getDate()))} ${parseDate(getDate())}, ${parseYear(getDate())}`;
-    const store = getStore();
-    buildTable(expense, amount, date, store);
-    expenseInput.value = '';
-    amountInput.value = '';
-    dateInput.value = '';
-    storeInput.value = '';
+    const newExpense = {
+        id: Date.now(),
+        item: expenseInput.value,
+        amount: amountInput.value,
+        date: `${monthToCalendar(parseMonth(getDate()))} ${parseDate(getDate())}, ${parseYear(getDate())}`,
+        location: locationInput.value
+    };
+
+    addNewExpense(newExpense);
+    document.getElementById('expenseForm').reset();
+}
+
+function addNewExpense(expense) {
+    buildTable(expense);
 }
 
 document.querySelector('#submitbutton').addEventListener('click', drawTable);
