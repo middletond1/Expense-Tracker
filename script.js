@@ -6,16 +6,6 @@ const table = document.querySelector('#expensetable');
 let expenseArray = JSON.parse(localStorage.getItem('expenseArray')) || [];
 
 
-function getExpense() {
-    const expense = expenseInput.value;
-    return expense;
-}
-
-function getAmount() {
-    const amount = `$${parseFloat(amountInput.value).toFixed(2)}`;
-    return amount;
-}
-
 function getDate() {
     const date = dateInput.value;
     return date;
@@ -52,11 +42,6 @@ function monthToCalendar(month) {
 function parseYear(date) {
     const year = date.substr(0, 4);
     return year;
-}
-
-function getStore() {
-    const store = locationInput.value;
-    return store;
 }
 
 function createTableData(item) {
